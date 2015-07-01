@@ -1,0 +1,9 @@
+*~
+
+# Compiled Objects
+*.o
+
+# Final Programs
+rt
+test_Vector3F
+test_Color
