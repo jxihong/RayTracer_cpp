@@ -1,0 +1,27 @@
+C++ Ray Tracer
+=============================
+
+Written By: Joey Hong
+
+This is a simple ray tracer build using C++, following the CS11
+Advanced C++ Track
+(http://courses.cms.caltech.edu/cs11/material/advcpp/index.html)
+
+The Google C++ Testing Framework and Boost Library were used in this
+program.
+
+-----------------------------
+
+The main program can be compiled with 'make' but not the test
+programs, which must be done separately:
+
+*tests/test_Color.cc
+*tests/test_Vector3F.cc
+
+In the Makefile, please first add the path to your own Boost Library.
+
+To run the program, type in the bash either:
+
+./rt < input.txt > output.png
+            OR
+./rt -f input.txt > output.png
