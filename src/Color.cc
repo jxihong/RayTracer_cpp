@@ -1,4 +1,4 @@
-#include "Color.hh"
+#include "../include/Color.hh"
 
 using namespace std;
 

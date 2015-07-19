@@ -1,4 +1,4 @@
-#include "PlaneObject.hh"
+#include "../include/PlaneObject.hh"
 
 using namespace std;
 

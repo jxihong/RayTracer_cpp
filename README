@@ -22,6 +22,6 @@ In the Makefile, please first add the path to your own Boost Library.
 
 To run the program, type in the bash either:
 
-./rt < input.txt > output.png
-            OR
+./rt < input.txt > output.png OR
+           
 ./rt -f input.txt > output.png

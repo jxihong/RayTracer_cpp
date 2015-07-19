@@ -1,4 +1,4 @@
-#include "Camera.hh"
+#include "../include/Camera.hh"
 
 using namespace std;
 

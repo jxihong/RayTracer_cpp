@@ -1,4 +1,4 @@
-#include "Scene.hh"
+#include "../include/Scene.hh"
 
 using namespace std;
 

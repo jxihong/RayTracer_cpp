@@ -1,37 +1,40 @@
-CXX                 =  g++
-DEBUG	    	    = -g
-COMPILER_OPTIONS    = -O0 -m64 -Wall -Wextra -Wshadow -pedantic
+PROG := rt
+CXX := g++
 
-CXXFLAGS     = $(DEBUG) -std=c++11  -Weffc++ $(COMPILER_OPTIONS)
-LDFLAGS      = -Wl -lm
+COMPILER_OPTIONS := -m64 -Wall -Wextra -Wshadow -Werror -pedantic
+CXXFLAGS := -std=c++11 -Weffc++ $(COMPILER_OPTIONS)
+LDFLAGS := -Wl --no-as-needed -lm
 
 # Flags for boost
-BOOST_PATH        =  # Your own boost library 
-CXXFLAGS         += -I $(BOOST_PATH)
+BOOST_PATH = # Your own boost library
+CXXFlAGS += -I $(BOOST_PATH)
 
-# Src files for the raytracer
-RAYTRACER_CXXSRCS  = rt.cc
-RAYTRACER_CXXSRCS += PlaneObject.cc SphereObject.cc CylinderObject.cc
-RAYTRACER_CXXSRCS += Scene.cc Camera.cc Ray.cc Light.cc Color.cc
+DEBUGFLAGS := -g -O0 -D _DEBUG
+RELEASEFLAGS := -O2 -D NDEBUG
 
-RAYTRACER_OBJS     = $(RAYTRACER_CXXSRCS:.cc=.o);
+TARGET  := $(PROG)
+SOURCES := $(shell echo src/*.cc)
+HEADERS := $(shell echo include/*.hh)
+COMMON  := 
+OBJECTS := $(SOURCES:.cpp=.o)
 
-# Build rules for programs
-rt              : $(RAYTRACER_OBJS)
-	            $(CXX) -o $@ $^ $(LDFLAGS)
-
-# C++ compilation implicit rule
-%.o             : %.cc
-	            $(CXX) -c $(CXXFLAGS) $< -o $@
-
-# Default compilation
-all 		: rt
-
-# Tell make that "clean" is not a file name!
-.PHONY: clean
-
-#Clean the build directory
-clean: 
-	rm -f *.o *~
+BACKUPS := $(shell echo src/*~) $(shell echo include/*~) *~
  
+all: $(TARGET)
 
+$(TARGET): $(OBJECTS) $(COMMON)
+	$(CXX) $(FLAGS) $(CXXFLAGS) $(DEBUGFLAGS) -o $(TARGET) $(OBJECTS)
+
+release: $(SOURCES) $(HEADERS) $(COMMON)
+	$(CXX) $(FLAGS) $(CXXFLAGS) $(RELEASEFLAGS) -o $(TARGET) $(SOURCES)
+
+zip:
+	-zip $(PROG).zip $(HEADERS) $(SOURCES) Makefile
+
+clean:
+	-rm -f $(TARGET) $(OBJECTS) $(BACKUPS) $(PROG).zip
+
+%.o: %.cpp $(HEADERS) $(COMMON)
+	$(CXX) $(CXXFLAGS) $(DEBUGFLAGS) -c -o $@ $<
+
+.PHONY : all release

@@ -1,4 +1,4 @@
-#include "Light.hh"
+#include "../include/Light.hh"
 
 using namespace std;
 

@@ -1,4 +1,4 @@
-#include "SphereObject.hh"
+#include "../include/SphereObject.hh"
 
 using namespace std;
 

@@ -1,4 +1,4 @@
-#include "Ray.hh"
+#include "../include/Ray.hh"
 
 Ray::Ray(const Vector3F &orig, const Vector3F &dir, bool normalize) :
     _orig(orig) , _dir(dir) {

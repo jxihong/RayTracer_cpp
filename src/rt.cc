@@ -1,11 +1,11 @@
-#include "Vector3.hh"
-#include "Color.hh"
-#include "SphereObject.hh"
-#include "PlaneObject.hh"
-#include "SceneObject.hh"
-#include "Camera.hh"
-#include "Scene.hh"
-#include "Light.hh"
+#include "../include/Vector3.hh"
+#include "../include/Color.hh"
+#include "../include/SphereObject.hh"
+#include "../include/PlaneObject.hh"
+#include "../include/SceneObject.hh"
+#include "../include/Camera.hh"
+#include "../include/Scene.hh"
+#include "../include/Light.hh"
 
 #include <iostream>
 #include <fstream>
